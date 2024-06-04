@@ -10,11 +10,18 @@ const { name, job, male = false } = Astro.props;
 ---
 
 <Card class="card">
-  <img src={male ? "images/avatar1.png" : "images/avatar2.png"} alt="user avatar" style="width:100%" />
+  <img
+    src={male ? "images/avatar1.png" : "images/avatar2.png"}
+    alt="user avatar"
+    style="width:100%"
+  />
   <Container class="container">
     <h4>{name}</h4>
-    <slot name="desc">
-      <p>{job}</p>
+    <p>{job}</p>
+    <slot name="description">
+      <p>
+        Add your description here
+      </p>
     </slot>
   </Container>
 </Card>
