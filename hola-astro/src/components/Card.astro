@@ -4,13 +4,13 @@ const Container = "div";
 export interface Props {
   name: string;
   job: string;
-  avatar?: boolean;
+  male?: boolean;
 }
-const { name, job, avatar = false } = Astro.props;
+const { name, job, male = false } = Astro.props;
 ---
 
 <Card class="card">
-  {avatar && <img src="images/avatar1.png" alt="imagen" style="width:100%" />}
+  <img src={male ? "images/avatar1.png" : "images/avatar2.png"} alt="user avatar" style="width:100%" />
   <Container class="container">
     <h4>{name}</h4>
     <slot name="desc">
