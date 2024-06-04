@@ -1,5 +1,6 @@
 ---
 import Nav from "@components/Header.astro";
+import Title from "@components/Title.astro";
 
 const { frontmatter } = Astro.props;
 ---
@@ -17,6 +18,7 @@ const { frontmatter } = Astro.props;
   <body>
     <Nav />
     <div class="container">
+      <Title title={frontmatter.title} title2="" subtitle={"Post by: " + frontmatter.author} />
       <slot />
     </div>
   </body>
