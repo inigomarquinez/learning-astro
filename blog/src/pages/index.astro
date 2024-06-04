@@ -1,6 +1,15 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Title from "@components/Title.astro";
+import BlogPreview from "@components/BlogPreview.astro";
+
+// https://docs.astro.build/en/reference/api-reference/#astroglob
+let allPost = await Astro.glob("./posts/**/*.md");
+allPost = allPost.sort(
+  (date1, date2) =>
+    new Date(date2.frontmatter.date).valueOf() -
+    new Date(date1.frontmatter.date).valueOf()
+);
 ---
 
 <Layout title="Welcome to my blog!">
@@ -9,4 +18,5 @@ import Title from "@components/Title.astro";
     title2="my blog!"
     subtitle="Awesome blog with Astro"
   />
+  {allPost.map((p) => <BlogPreview post={p} />)}
 </Layout>

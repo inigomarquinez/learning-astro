@@ -1,5 +1,5 @@
 ---
-layout: "@layouts/Layoutmd.astro"
+layout: "@layouts/LayoutMarkdown.astro"
 title: Tables
 date: 15 Sep 2022
 author: Íñigo Marquínez
