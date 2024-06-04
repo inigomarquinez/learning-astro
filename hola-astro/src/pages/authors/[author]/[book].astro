@@ -1,0 +1,11 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+
+// https://docs.astro.build/en/guides/routing/#dynamic-routes
+const { author, book } = Astro.params;
+---
+
+<Layout title="{book}">
+  <h1>{book}</h1>
+  <p>The author of the book "{book}" is {author}</p>
+</Layout>
