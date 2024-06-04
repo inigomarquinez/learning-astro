@@ -1,8 +1,8 @@
 ---
-layout: '../layouts/Layout.astro'
+layout: '../layouts/LayoutMarkdown.astro'
+title: 'Terms & Conditions'
+date: '4th June 2024'
 ---
-
-# Terms & Conditions
 
 ## Privacy Policy
 
