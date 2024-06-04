@@ -2,18 +2,19 @@
 const Card = "div";
 const Container = "div";
 export interface Props {
-  nombre: string;
-  avatar: boolean;
+  name: string;
+  job: string;
+  avatar?: boolean;
 }
-const { nombre, avatar } = Astro.props;
+const { name, job, avatar = false } = Astro.props;
 ---
 
 <Card class="card">
-  <img src="images/avatar1.png" alt="imagen" style="width:100%" />
+  {avatar && <img src="images/avatar1.png" alt="imagen" style="width:100%" />}
   <Container class="container">
-    <h4>{nombre}</h4>
+    <h4>{name}</h4>
     <slot name="desc">
-      <p>Description</p>
+      <p>{job}</p>
     </slot>
   </Container>
 </Card>
