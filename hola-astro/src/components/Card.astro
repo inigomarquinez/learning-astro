@@ -3,25 +3,20 @@ const Card = "div";
 const Container = "div";
 export interface Props {
   name: string;
-  job: string;
-  male?: boolean;
+  email: string;
+  company: string;
 }
-const { name, job, male = false } = Astro.props;
+const { name, email, company } = Astro.props;
 ---
 
 <Card class="card">
-  <img
-    src={male ? "images/avatar1.png" : "images/avatar2.png"}
-    alt="user avatar"
-    style="width:100%"
-  />
+  <img src="images/avatar2.png" alt="user avatar" style="width:100%" />
   <Container class="container">
     <h4>{name}</h4>
-    <p>{job}</p>
+    <p>{company}</p>
+    <p>{email}</p>
     <slot name="description">
-      <p>
-        Add your description here
-      </p>
+      <p>Add your description here</p>
     </slot>
   </Container>
 </Card>
@@ -31,7 +26,7 @@ const { name, job, male = false } = Astro.props;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     margin-left: 50px;
-    width: 15%;
+    width: 50%;
     margin-bottom: 15px;
     padding: 20px;
   }
