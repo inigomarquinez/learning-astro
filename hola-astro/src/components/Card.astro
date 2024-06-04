@@ -1,0 +1,38 @@
+---
+const Card = "div";
+const Container = "div";
+export interface Props {
+  nombre: string;
+  avatar: boolean;
+}
+const { nombre, avatar } = Astro.props;
+---
+
+<Card class="card">
+  <img src="images/avatar1.png" alt="imagen" style="width:100%" />
+  <Container class="container">
+    <h4>{nombre}</h4>
+    <slot name="desc">
+      <p>Description</p>
+    </slot>
+  </Container>
+</Card>
+
+<style>
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    margin-left: 50px;
+    width: 15%;
+    margin-bottom: 15px;
+    padding: 20px;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .container {
+    padding: 2px, 16px;
+  }
+</style>
