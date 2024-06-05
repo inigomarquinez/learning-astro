@@ -1,5 +1,5 @@
 ---
-layout: '../layouts/LayoutMarkdown.astro'
+layout: '@layouts/LayoutMarkdown.astro'
 title: 'Terms & Conditions'
 date: '4th June 2024'
 ---
