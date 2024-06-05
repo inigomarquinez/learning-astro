@@ -1,6 +1,53 @@
 ---
 import Layout from "@layouts/Layout.astro";
 
+export interface MovieDetails {
+  adult: boolean;
+  backdrop_path: string;
+  belongs_to_collection: null;
+  budget: number;
+  genres: string[];
+  homepage: string;
+  id: number;
+  imdb_id: string;
+  origin_country: string[];
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  production_companies: string[];
+  production_countries: string[];
+  release_date: Date;
+  revenue: number;
+  runtime: number;
+  spoken_languages: string[];
+  status: string;
+  tagline: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+
+export interface MovieVideosResult {
+  id: number;
+  results: MovieVideos[];
+}
+
+export interface MovieVideos {
+  iso_639_1: string;
+  iso_3166_1: string;
+  name: string;
+  key: string;
+  site: string;
+  size: number;
+  type: string;
+  official: boolean;
+  published_at: Date;
+  id: string;
+}
+
 const { id } = Astro.params;
 
 const options = {
@@ -11,13 +58,26 @@ const options = {
   },
 };
 
+// Fetch movie details
 const response = await fetch(
   "https://api.themoviedb.org/3/movie/" + id + "?language=en-US",
   options
 );
-const data = await response.json();
+const data: MovieDetails = await response.json();
+
+// Fetch movie trailer
+const fetchVideoResponse = await fetch(
+  "https://api.themoviedb.org/3/movie/" + id + "/videos?language=en-US",
+  options
+);
+const videos: MovieVideosResult = await fetchVideoResponse.json();
+const trailers = videos.results.filter(
+  (p) => p.site === "YouTube" && p.type === "Trailer"
+);
+const video = trailers[0];
 
 const poster_base_url = "https://image.tmdb.org/t/p/w500/";
+const youtube_base_url = "https://www.youtube.com/embed/";
 ---
 
 <Layout>
@@ -41,4 +101,11 @@ const poster_base_url = "https://image.tmdb.org/t/p/w500/";
       </h1>
     </div>
   </div>
+
+  <h1>Trailer</h1>
+  <iframe
+    allowfullscreen
+    src={youtube_base_url + video.key}
+    width="1280"
+    height="720"></iframe>
 </Layout>
