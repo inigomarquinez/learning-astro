@@ -1,0 +1,63 @@
+---
+export interface Result {
+  page: number;
+  results: Movie[];
+  total_pages: number;
+  total_results: number;
+}
+
+export interface Movie {
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: Date;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+
+const options = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization:
+      `Bearer ${import.meta.env.TMDB_API_KEY}`,
+  },
+};
+
+const response = await fetch(
+  "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
+  options
+);
+const data = await response.json();
+const detail = "/detail/";
+const poster_base_url = "https://image.tmdb.org/t/p/w500/";
+---
+
+<div class="row">
+  {
+    data.results.map((item: Movie) => (
+      <div class="col-lg-3">
+        <div class="card mt-4" style="width: 18 rem;">
+          <a href={detail + item.id}>
+            <img
+              src={poster_base_url + item.poster_path}
+              alt="poster"
+              class="card-img-top"
+            />
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">{item.title}</h5>
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</div>
