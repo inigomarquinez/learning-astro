@@ -7,23 +7,27 @@
   let show = false;
 
   const fetchUrl = async () => {
-    const options = {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        "content-type": "application/json",
-        Authorization: shortioApiKey,
-      },
-      body: JSON.stringify({
-        domain: shortioDomain,
-        originalURL: urlToShorten,
-      }),
-    };
-    const response = await fetch("https://api.short.io/links", options);
-    const data = await response.json();
-    urlResult = data.shortURL;
-    show = true;
+    if (urlToShorten.length > 0) {
+      const options = {
+        method: "POST",
+        headers: {
+          accept: "application/json",
+          "content-type": "application/json",
+          Authorization: shortioApiKey,
+        },
+        body: JSON.stringify({
+          domain: shortioDomain,
+          originalURL: urlToShorten,
+        }),
+      };
+      const response = await fetch("https://api.short.io/links", options);
+      const data = await response.json();
+      urlResult = data.shortURL;
+      show = true;
+    }
   };
+
+  const copy = () => navigator.clipboard.writeText(urlResult);
 
   const buttonStyle =
     "bg-purple-500 hover:bg-purple-400 text-white font-bold py-2 px-10 rounded";
@@ -53,4 +57,9 @@
   <button type="button" class={buttonStyle} on:click={fetchUrl}>Shorten</button>
 </div>
 
-<p>{urlResult}</p>
+{#if show}
+  <div class="md:flex md:flex-col md:items-center mt-10 justify-center">
+    <input readonly bind:value={urlResult} class="text-5xl text-pink-500" />
+    <button class={buttonStyle + " my-5"} on:click={copy}>Copy</button>
+  </div>
+{/if}
