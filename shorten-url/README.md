@@ -21,7 +21,6 @@ All commands are run from the root of the project, from a terminal:
 
 In order to shorten the URLs, you need to have a [short.io](https://short.io/) account and an [API key](https://app.short.io/settings/integrations/api-key).
 
-
 ## ⚙️ Environment Variables
 
 ```bash
