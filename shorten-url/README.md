@@ -16,3 +16,20 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro -- --help` | Get help using the Astro CLI                      |
 | `npx astro add svelte`    | Add Svelte integration to the Astro project       |
 | `npx astro add tailwind`  | Add Tailwind CSS integration to the Astro project |
+
+## 🚩 Requirements
+
+In order to shorten the URLs, you need to have a [short.io](https://short.io/) account and an [API key](https://app.short.io/settings/integrations/api-key).
+
+
+## ⚙️ Environment Variables
+
+```bash
+PUBLIC_SHORTIO_DOMAIN=your_shortio_domain
+PUBLIC_SHORTIO_API_KEY=your_shortio_api_key # https://app.short.io/settings/integrations/api-key
+```
+
+## 🔗 Useful links
+
+- [short.io](https://short.io/)
+- [short.io Developer Hub](https://developers.short.io/)
