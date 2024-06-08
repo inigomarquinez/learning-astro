@@ -10,3 +10,4 @@ This repo contains a collection of projects built with [Astro](https://astro.bui
 | [Shorten URL](./shorten-url) | A simple URL shortener built with Astro, Svelte and Tailwind CSS. |
 | [Scroll page](./scroll-page) | A simple project built with Astro and Vue that shows how to scroll the page to a specific section. |
 | [Portfolio](./portfolio) | A portfolio website built with Astro and Tailwind. |
+| [Content Collections](./content-collections) | A project to learn about content collections in Astro. |
