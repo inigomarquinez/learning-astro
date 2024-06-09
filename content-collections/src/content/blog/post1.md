@@ -5,7 +5,7 @@ date: 2024-06-08
 active: true
 author: Íñigo Marquínez
 image: {
-  src: "https://source.unsplash.com/8z3h3yZ8v7Q/1600x900",
+  src: "https://images.unsplash.com/photo-1595518107491-f80eb7f9881e?q=80&w=400",
   alt: "Image alt text"
 }
 category: astro
