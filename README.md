@@ -11,3 +11,4 @@ This repo contains a collection of projects built with [Astro](https://astro.bui
 | [Scroll page](./scroll-page) | A simple project built with Astro and Vue that shows how to scroll the page to a specific section. |
 | [Portfolio](./portfolio) | A portfolio website built with Astro and Tailwind. |
 | [Content Collections](./content-collections) | A project to learn about content collections in Astro. |
+| [GPT](./gpt) | A project to learn about Astro and Artifical Intelligence with OpenAI, Dall-e and ChatGPT. |
