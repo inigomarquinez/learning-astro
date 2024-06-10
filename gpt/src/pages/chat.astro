@@ -1,7 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Chatbot from "../components/Chatbot";
 ---
 
-<Layout title="Chat">
-  <h1>Chat</h1>
+<Layout title="Chatbot">
+  <div class="mt-4">
+    <Chatbot client:load />
+  </div>
 </Layout>
