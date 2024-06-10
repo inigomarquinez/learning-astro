@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import Loader from "./Loader";
+
 export default function Dalle() {
   const [url, setUrl] = useState("");
   const [prompt, setPrompt] = useState("");
@@ -31,6 +33,7 @@ export default function Dalle() {
             </button>
           </div>
           <img src={url} alt="" className="mt-4" />
+          <Loader />
         </div>
       </div>
     </div>
