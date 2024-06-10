@@ -1,7 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Dalle from "../components/Dalle";
 ---
 
 <Layout title="Image">
-  
+  <div class="mt-4">
+    <Dalle client:load />
+  </div>
 </Layout>
