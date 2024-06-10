@@ -5,9 +5,40 @@ import Loader from "./Loader";
 export default function Dalle() {
   const [url, setUrl] = useState("");
   const [prompt, setPrompt] = useState("");
+  const [load, setLoad] = useState(false);
 
   const apiSubmit = async () => {
-    console.log("apiSubmit");
+    setLoad(true);
+    setUrl("");
+
+    // ⚠️ It's not safe to expose the API key in the frontend. This is just for demo purposes.
+    const openaiApiKey = import.meta.env.PUBLIC_OPENAI_API_KEY;
+
+    // https://platform.openai.com/docs/api-reference/images/create
+    const openaiImagesUrl = "https://api.openai.com/v1/images/generations";
+
+    const body = {
+      prompt,
+      n: 1,
+      size: "256x256",
+    };
+
+    const response = await fetch(openaiImagesUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${openaiApiKey}`,
+      },
+      body: JSON.stringify(body),
+    });
+
+    const choices = await response.json();
+    const choicesFirstUrl = choices.data[0].url;
+    if (choicesFirstUrl !== "") {
+      setUrl(choicesFirstUrl);
+      setLoad(false);
+      setPrompt("");
+    }
   };
 
   return (
@@ -32,8 +63,8 @@ export default function Dalle() {
               Send
             </button>
           </div>
+          {load && <Loader />}
           <img src={url} alt="" className="mt-4" />
-          <Loader />
         </div>
       </div>
     </div>

@@ -17,6 +17,17 @@ All commands are run from the root of the project, from a terminal:
 | `npx astro add react`     | Add React integration to the Astro project        |
 | `npx astro add tailwind`  | Add Tailwind CSS integration to the Astro project |
 
+## 🚩 Requirements
+
+In order to make the dalle and chatbot tools work, you need to have an [OpenAI](https://platform.openai.com/) account and an API key.
+
+## ⚙️ Environment Variables
+
+```bash
+PUBLIC_OPENAI_API_KEY=your_openai_api_key # https://platform.openai.com/api-keys
+```
+
 ## 🔗 Useful links
 
 - [OpenAI documentation](https://platform.openai.com/docs/overview)
+- [OpenAI API reference](https://platform.openai.com/docs/api-reference/introduction)
